@@ -1,0 +1,2 @@
+class NightWrite
+end

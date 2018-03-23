@@ -7,28 +7,30 @@ Jerrel Mitchell & Chris Powell
 
 # Project Expectations: What does each group member hope to get out of this project?
 
-Jerrel:
+Jerrel: Understand breaking a big problem down into obtainable goals and methods, get more comfortable asking questions about unfamiliar concepts.
 
 Chris: Learn more about how to use Ruby. Hone collaboration skills.
 
 # Goals and expectations:
 
-Jerrel:
+Jerrel: Complete iteration 5 with excellent testing of edge cases and understanding base concepts of problem break down.
 
 Chris:
 
 # Team strengths:
 
-Jerrel : time management,
+Jerrel : time management, lots of availability to research and provide edge case testing.
 Chris: resource management
 
 # How to overcome obstacles:
 
+Spend 30 minutes trying to figure out problem, if unresolved by then to reach out for help.
+
 # Schedule Expectations (When are we available to work together and individually?):
 
-Jerrel:
+Jerrel: Anytime
 
-Chris: 7/8am morning & 7/8pm evening
+Chris: 7/8am morning & 7/8pm evening - independent
 
 # Communication Expectations (How and often will we communicate? How do we keep lines of communication open?):
 
@@ -58,7 +60,7 @@ Meet together for brainstorming Friday 3/23, from 4-6pm
 
 # Ideas:
 
-Use Hash/dictionary to store letters as keys and braile (possibly arrays?) translations as values.
+Use Hash/dictionary to store letters as keys and Braille (possibly arrays?) translations as values.
 
 # Tools:
 

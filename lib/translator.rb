@@ -36,9 +36,17 @@ class Translator
                   ":" => ["..", "00", ".."],
                   "!" => ["..", "00", "0."],
                   "?" => ["..", "0.", "00"],
+
                   "(" => ["..", "00", "00"],
                   ")" => ["..", "00", "00"],
                   "-" => ["..", "..", "00"],
                   shift: ["..", "..", ".0"] }
   end
+
+  def english_to_braille(char)
+    @alphabet.values_at(char).flatten
+  end
+
+
+
 end

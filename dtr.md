@@ -1,5 +1,4 @@
-Project:
-Night Writer
+# Project: Night Writer
 
 # Group Member Names:
 
@@ -43,3 +42,27 @@ Jerrel: Helping others resolve problems .... easily frustrated if not able to un
 Chris: Researching problems to find solutions .... Learning algorithms and ruby syntax
 
 # Workload Expectations (What features do we each want to work on?):
+
+> Working together on all features.
+
+# Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests):
+
+> Review daily during retro.
+
+# Expectations for giving and receiving feedback:
+
+> During retros, constructive feedback that is actionable, specific, and kind.
+
+# Agenda to discuss project launch:
+
+> Meet together for brainstorming Friday 3/23, from 4-6pm
+
+# Ideas:
+
+> Use Hash/dictionary to store letters as keys and Braille (possibly arrays?) translations as values.
+
+# Tools:
+
+Atom, Terminal, Slack
+
+# Additional Notes:

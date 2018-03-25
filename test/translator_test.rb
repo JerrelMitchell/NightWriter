@@ -88,8 +88,8 @@ class TranslatorTest < Minitest::Test
   def test_can_translate_a_full_sentence
 
     translator = Translator.new
-    expected   = []
-    actual
-
+    expected   = ["..00", "....", ".00.", ".0", "0.", "..", "0.", "..", "0.", "0.", ".0", "..", "..","..","0.", ".0", "0.", "0.", "..", "..", "..", "0.", ".0", "00", "0.", "..", ".."]
+    actual     = translator.english_to_braille("Mike's za")
+    assert_equal expected, actual 
   end
 end

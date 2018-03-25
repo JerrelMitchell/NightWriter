@@ -1,8 +1,14 @@
 require './lib/translator'
 require './lib/printer'
 
-lines = File.open(ARGV[0])
-plaintext = File.read(lines)
-File.write(ARGV[1], final_text)
+translator    = Translator.new
+printer       = Printer.new
+text_lines    = File.open(ARGV[0])
 
-puts "Created '#{ARGV[1]}' containing#{plaintext.strip.length} characters"
+readfile      = File.read(text_lines)
+braille       = translator.encode(readfile)
+
+printer.print(braille)
+File.write(ARGV[1], printer)
+
+p "Created '#{ARGV[1]}' containing #{readfile.strip.length} characters"

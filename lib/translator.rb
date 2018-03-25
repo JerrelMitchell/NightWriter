@@ -43,9 +43,13 @@ class Translator
                   shift: ["..", "..", ".0"] }
   end
 
-  def english_to_braille(char)
-    @alphabet.values_at(char).flatten
+  def english_to_braille(chars)
+    chars_array = chars.split('')
+    chars_array.map do |char|
+      @alphabet.values_at(char)
+    end.flatten
   end
+
 
 
 

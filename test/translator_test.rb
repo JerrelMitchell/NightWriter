@@ -6,8 +6,8 @@ require 'pry'
 class TranslatorTest < Minitest::Test
   def test_can_translate_one_lowercase_character
     translator = Translator.new
-    expected = ["0.", "..", "0."]
-    actual   = translator.english_to_braille("k")
+    expected   = ["0.", "..", "0."]
+    actual     = translator.english_to_braille("k")
 
     assert_equal expected, actual
 
@@ -38,27 +38,28 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_multiple_uppercase_characters
+    skip
     translator = Translator.new
-    expected   = ["..", "..", ".0", "0.", "0.", "..", "..", "..", ".0",\
-                  "0.", ".0", "00"]
+    expected   = ["..", "..", ".0", "0.", "0.", "0.", ".0", "00"]
     actual     = translator.english_to_braille("BZ")
 
     assert_equal expected, actual
   end
 
   def test_can_translate_multiple_upper_and_lowercase_characters
+    skip
     translator = Translator.new
     expected   = ["..", "..", ".0", "0.", "..", "..", "0.", "0.", "..",\
                   "..", "..", ".0", "00", "..", "..", "00", ".0", ".."]
-    actual     = translator.english_to_braille("AbCd")
+    actual     = translator.english_to_braille("Ab Cd")
 
     assert_equal expected, actual
   end
 
   def test_can_translate_spaces
     translator = Translator.new
-    expected   = ["0.", ".0", "00", "..", "..", "..", "..", "..", ".0",\
-                  "0.", ".0", "0."]
+    expected   = ["0.", ".0", "00", "..", "..", "..",\
+                  "..", "..", ".0", "0.", ".0", "0."]
     actual     = translator.english_to_braille("z O")
 
     assert_equal expected, actual
@@ -99,6 +100,7 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_a_full_sentence
+    skip
     translator = Translator.new
     expected   = ["..", "..", ".0", "00", "..", "0.", ".0", "0.", "..",\
                   "0.", "..", "0.", "0.", ".0", "..", "..", "..", "0.",\

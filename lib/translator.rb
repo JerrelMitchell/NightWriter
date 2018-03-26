@@ -51,9 +51,25 @@ class Translator
                  number_shift: [".0", ".0", "00"] }
   end
 
+  # initial attempt to find duplicates for incoming iterated characters
+  def find_duplicates(characters)
+    encountered = {}
+    characters.each do |character|
+      if encountered[character]
+        puts "Dupe exists for: " << character
+      else
+        encountered[character] = 1
+      end
+    end
+  end
+
+  # method needs to add ONE shift if there are multiple numbers put together,
+  # and TWO shifts if there is a word made of capitals letters.
+
+  # method needs to be broken up and encapsulated
   def english_to_braille(chars)
     chars.split('').map do |character|
-      if character.count("0-9") > 0
+      if character.count('0-9') > 0
         alphabet.fetch_values(:number_shift, character)
       elsif character == character.downcase
         alphabet[character]

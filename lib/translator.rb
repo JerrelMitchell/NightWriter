@@ -68,7 +68,7 @@ class Translator
 
   # method needs to be broken up and encapsulated
   def english_to_braille(chars)
-    chars.split('').map do |character|
+    chars.gsub(/\n/, '').split('').map do |character|
       if character.count('0-9') > 0
         alphabet.fetch_values(:number_shift, character)
       elsif character == character.downcase

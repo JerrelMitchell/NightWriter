@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/translator'
-require 'pry'
 
 class TranslatorTest < Minitest::Test
   def test_can_translate_one_lowercase_character
@@ -58,7 +57,6 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_one_uppercase_character
-    skip
     translator = Translator.new
     expected   = ['..', '..', '.0', '0.', '..', '..']
     actual     = translator.english_to_braille('A')
@@ -67,26 +65,26 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_multiple_uppercase_characters
-    skip
     translator = Translator.new
-    expected   = ['..', '..', '.0', '0.', '0.', '0.', '.0', '00']
+    expected   = ['..', '..', '.0', '.0', '00', '.0',\
+                  '..', '..', '.0', '0.', '.0', '0.',\
+                  '..', '..', '.0', '.0', '00', '.0']
     actual     = translator.english_to_braille('WOW')
 
     assert_equal expected, actual
   end
 
   def test_can_translate_multiple_upper_and_lowercase_characters
-    skip
     translator = Translator.new
-    expected   = ['..', '..', '.0', '0.', '..', '..', '0.', '0.', '..',\
-                  '..', '..', '.0', '00', '..', '..', '00', '.0', '..']
+    expected   = ['..', '..', '.0', '0.', '..', '..',\
+                  '0.', '0.', '..', '..', '..', '.0',\
+                  '00', '..', '..', '00', '.0', '..']
     actual     = translator.english_to_braille('AbCd')
 
     assert_equal expected, actual
   end
 
-  def test_can_a_translate_number
-    skip
+  def test_can_translate_a_number
     translator = Translator.new
     expected   = ['.0', '.0', '00', '0.', '.0', '..']
     actual     = translator.english_to_braille('5')
@@ -95,7 +93,6 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_multiple_numbers
-    skip
     translator = Translator.new
     expected   = ['.0', '.0', '00', '0.', '0.', '..', '.0', '.0', '00',\
                   '.0', '0.', '..', '.0', '.0', '00', '00', '00', '..',\
@@ -106,16 +103,19 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_a_full_sentence
-    skip
     translator = Translator.new
-    expected   = ['..', '..', '.0', '00', '..', '0.', '.0', '0.', '..',\
-                  '0.', '..', '0.', '0.', '.0', '..', '..', '..', '0.',\
-                  '.0', '0.', '0.', '..', '..', '..', '.0', '.0', '00',\
-                  '00', '0.', '..', '.0', '.0', '00', '0.', '0.', '..',\
-                  '00', '.0', '0.', '00', '.0', '..', '..', '..', '..',\
-                  '..', '..', '.0', '00', '0.', '0.', '..', '..', '.0',\
-                  '.0', '0.', '..', '..', '..', '.0', '0.', '.0', '00',\
-                  '..', '..', '.0', '0.', '.0', '00', '..', '..', '.0',\
+    expected   = ['..', '..', '.0', '00', '..', '0.',\
+                  '.0', '0.', '..', '0.', '..', '0.',\
+                  '0.', '.0', '..', '..', '..', '0.',\
+                  '.0', '0.', '0.', '..', '..', '..',\
+                  '.0', '.0', '00', '00', '0.', '..',\
+                  '.0', '.0', '00', '0.', '0.', '..',\
+                  '00', '.0', '0.', '00', '.0', '..',\
+                  '..', '..', '..', '..', '..', '.0',\
+                  '00', '0.', '0.', '..', '..', '.0',\
+                  '.0', '0.', '..', '..', '..', '.0',\
+                  '0.', '.0', '00', '..', '..', '.0',\
+                  '0.', '.0', '00', '..', '..', '.0',\
                   '0.', '..', '..', '..', '0.', '00', '..', '00', '0.']
     actual     = translator.english_to_braille("Mike's 62nd PIZZA?!")
 

@@ -43,10 +43,10 @@ class PrinterTest < Minitest::Test
 
     text = translator.english_to_braille('abc')
     actual = printer.print_tracks(text)
-    expected = +"0.0.00
-                 ..0...
-                 ......
-                       "
+    expected = "0.0.00
+                ..0...
+                ......
+                      "
     assert_equal expected.delete(' '), actual
   end
 end

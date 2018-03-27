@@ -7,14 +7,6 @@ class Printer
     @output_text = ''
   end
 
-  def slice_to_tracks(characters)
-    characters.each_slice(3) do |character|
-      track1 << character[0]
-      track2 << character[1]
-      track3 << character[2]
-    end
-  end
-
   def fill_tracks(character)
     track1 << character[0]
     track2 << character[1]

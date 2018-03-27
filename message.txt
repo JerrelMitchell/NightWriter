@@ -1,0 +1,1 @@
+Here I'm testing if this encoder works. Will it go further than 80 characters and move onto the next track?

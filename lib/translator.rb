@@ -65,6 +65,10 @@ class Translator
     end
   end
 
+  def braille_to_english(characters)
+
+  end
+
   # method adds ONE number shift if there're any number of numbers put together
   # ONE letter shift if a word is capitalized.
   # and TWO shifts if there is a WORD/ABBREVIATION made of capitals letters.

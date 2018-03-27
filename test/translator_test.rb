@@ -30,6 +30,7 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_one_uppercase_character
+    skip
     translator = Translator.new
     expected   = ["..", "..", ".0", "0.", "..", ".."]
     actual     = translator.english_to_braille("A")
@@ -57,6 +58,7 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_spaces
+    skip
     translator = Translator.new
     expected   = ["0.", ".0", "00", "..", "..", "..",\
                   "..", "..", ".0", "0.", ".0", "0."]
@@ -82,6 +84,7 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_number
+    skip
     translator = Translator.new
     expected   = [".0", ".0", "00", "0.", ".0", ".."]
     actual     = translator.english_to_braille("5")
@@ -90,6 +93,7 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_can_translate_multiple_numbers
+    skip
     translator = Translator.new
     expected   = [".0", ".0", "00", "0.", "0.", "..", ".0", ".0", "00",\
                   ".0", "0.", "..", ".0", ".0", "00", "00", "00", "..",\

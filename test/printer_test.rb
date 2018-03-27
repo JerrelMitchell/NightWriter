@@ -1,51 +1,52 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/printer.rb'
+require './lib/translator'
 require 'pry'
 
 class PrinterTest < Minitest::Test
-  def test_there_is_printer
+  def test_it_exists
     printer = Printer.new
     assert_instance_of Printer, printer
   end
 
-  def test_can_print_one_character_first_line
-    printer    = Printer.new
-    translator = Translator.new
-    character  = translator.english_to_braille("a")
-    expected   = ["0."]
-    actual     = printer.print_first_line(character)
+  def test_it_is_created_with_empty_tracks
+    printer = Printer.new
 
-    assert_equal expected, actual
+    assert printer.track1.empty?
+    assert printer.track2.empty?
+    assert printer.track3.empty?
   end
 
-  def test_can_print_multiples_characters_first_line
-    printer    = Printer.new
-    translator = Translator.new
-    character  = translator.english_to_braille("pizza")
-    expected   = ["00", ".0", "0.", "0.", "0."]
-    actual     = printer.print_first_line(character)
+  def test_it_is_created_with_empty_output
+    printer = Printer.new
 
-    assert_equal expected, actual
+    assert printer.output_text.empty?
   end
 
-  def test_can_print_multiples_characters_second_line
-    printer    = Printer.new
+  def test_it_slices_single_character_from_translator_into_tracks
+    printer = Printer.new
     translator = Translator.new
-    character  = translator.english_to_braille("pizza")
-    expected   = ["0.", "0.", ".0", ".0", ".."]
-    actual     = printer.print_second_line(character)
 
-    assert_equal expected, actual
+    text = translator.english_to_braille('a')
+    actual = printer.print_tracks(text)
+    expected = "0.
+                ..
+                ..
+                  "
+    assert_equal expected.delete(' '), actual
   end
 
-  def test_can_print_multiples_characters_third_line
-    printer    = Printer.new
+  def test_it_slices_multiple_characters_from_translator_into_tracks
+    printer = Printer.new
     translator = Translator.new
-    character  = translator.english_to_braille("pizza")
-    expected   = ["0.", "..", "00", "00", ".."]
-    actual     = printer.print_third_line(character)
 
-    assert_equal expected, actual
+    text = translator.english_to_braille('abc')
+    actual = printer.print_tracks(text)
+    expected = +"0.0.00
+                 ..0...
+                 ......
+                       "
+    assert_equal expected.delete(' '), actual
   end
 end

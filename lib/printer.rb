@@ -2,14 +2,21 @@ require "./lib/translator.rb"
 
 class Printer
 
-  def print(characters)
-    string1 = ''
-    string2 = ''
-    string3 = ''
-    characters.each_slice(3) do |character|
-      string1  << character[0]
-      string2  << character[1]
-      string3  << character[2]
+  def print_first_line(characters)
+    line1 = characters.map do |chars|
+      chars[0]
+    end
+  end
+
+  def print_second_line(characters)
+    line2 = characters.map do |chars|
+      chars[1]
+    end
+  end
+
+  def print_third_line(characters)
+    line1 = characters.map do |chars|
+      chars[2]
     end
   end
 end

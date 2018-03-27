@@ -59,14 +59,9 @@ class Translator
   # pull out number and letter shift into methods that will add shifts on their
   # own accord to better control amount of shift characters!!!
   def english_to_braille(chars)
-    chars.gsub(/\n/, '').split('').map do |character|
-      if character.count('0-9') > 0
-        alphabet.fetch_values(:number_shift, character)
-      elsif character == character.downcase
-        alphabet[character]
-      else
-        alphabet.fetch_values(:letter_shift, character.downcase)
-      end
-    end.flatten
+    chars.split('').map do |character|
+
+      alphabet[character]
+    end
   end
 end

@@ -13,20 +13,39 @@ class PrinterTest < Minitest::Test
     printer    = Printer.new
     translator = Translator.new
     character  = translator.english_to_braille("a")
-    expected   = "0....."
-    actual     = printer.print(character)
+    expected   = ["0."]
+    actual     = printer.print_first_line(character)
 
     assert_equal expected, actual
   end
 
-  def test_can_print_multiples_characters
+  def test_can_print_multiples_characters_first_line
     printer    = Printer.new
     translator = Translator.new
     character  = translator.english_to_braille("pizza")
-    expected   = "00.00.0.0.0.0..0.0..0...0000.."
-    actual     = printer.print(character)
-    binding.pry
+    expected   = ["00", ".0", "0.", "0.", "0."]
+    actual     = printer.print_first_line(character)
+
     assert_equal expected, actual
   end
 
+  def test_can_print_multiples_characters_second_line
+    printer    = Printer.new
+    translator = Translator.new
+    character  = translator.english_to_braille("pizza")
+    expected   = ["0.", "0.", ".0", ".0", ".."]
+    actual     = printer.print_second_line(character)
+
+    assert_equal expected, actual
+  end
+
+  def test_can_print_multiples_characters_third_line
+    printer    = Printer.new
+    translator = Translator.new
+    character  = translator.english_to_braille("pizza")
+    expected   = ["0.", "..", "00", "00", ".."]
+    actual     = printer.print_third_line(character)
+
+    assert_equal expected, actual
+  end
 end

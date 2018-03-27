@@ -24,6 +24,40 @@ class PrinterTest < Minitest::Test
     assert printer.output_text.empty?
   end
 
+  def test_fill_tracks
+    printer = Printer.new
+    translator = Translator.new
+
+    text = translator.english_to_braille('a')
+    printer.fill_tracks(text)
+
+
+    actual1 = printer.track1
+
+    expected1 = "0."
+
+    assert_equal expected1, actual1
+
+    text = translator.english_to_braille('aa')
+    printer.fill_tracks(text)
+
+    actual2 = printer.track1
+    expected2 = "0.0."
+
+    assert_equal expected2, actual2
+  end
+
+  def test_end_track
+    printer = Printer.new
+    translator = Translator.new
+    track1 = translator.english_to_braille('a')
+    81.times do
+    printer.fill_tracks(track1)
+    end
+
+    assert_equal track1[-1], "\n"
+
+  end
   def test_it_slices_single_character_from_translator_into_tracks
     printer = Printer.new
     translator = Translator.new

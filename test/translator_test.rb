@@ -23,8 +23,38 @@ class TranslatorTest < Minitest::Test
 
   def test_can_translate_multiple_lowercase_characters
     translator = Translator.new
-    expected   = ["0.", "..", "0.", "0.", "..", ".."]
-    actual     = translator.english_to_braille("ka")
+    expected   = [".0", "0.", "0.", "0.", "0.", "0.",\
+                  ".0", "0.", "..", "00", "0.", "0."]
+    actual     = translator.english_to_braille("slip")
+
+    assert_equal expected, actual
+  end
+
+  def test_can_translate_spaces
+    translator = Translator.new
+    expected   = ["0.", ".0", "00",\
+                  "..", "..", "..",\
+                  "0.", ".0", "0."]
+    actual     = translator.english_to_braille("z o")
+
+    assert_equal expected, actual
+  end
+
+  def test_can_translate_a_punctuation_mark
+    translator = Translator.new
+    expected   = ["..", "0.", "00"]
+    actual     = translator.english_to_braille("?")
+
+    assert_equal expected, actual
+  end
+
+
+  def test_can_translate_multiple_punctuation_marks
+    translator = Translator.new
+    expected   = ["..", "00", ".0",\
+                  "..", "..", "00",\
+                  "..", "00", "0."]
+    actual     = translator.english_to_braille(".-!")
 
     assert_equal expected, actual
   end
@@ -42,7 +72,7 @@ class TranslatorTest < Minitest::Test
     skip
     translator = Translator.new
     expected   = ["..", "..", ".0", "0.", "0.", "0.", ".0", "00"]
-    actual     = translator.english_to_braille("BZ")
+    actual     = translator.english_to_braille("WOW")
 
     assert_equal expected, actual
   end
@@ -52,38 +82,12 @@ class TranslatorTest < Minitest::Test
     translator = Translator.new
     expected   = ["..", "..", ".0", "0.", "..", "..", "0.", "0.", "..",\
                   "..", "..", ".0", "00", "..", "..", "00", ".0", ".."]
-    actual     = translator.english_to_braille("Ab Cd")
+    actual     = translator.english_to_braille("AbCd")
 
     assert_equal expected, actual
   end
 
-  def test_can_translate_spaces
-    skip
-    translator = Translator.new
-    expected   = ["0.", ".0", "00", "..", "..", "..",\
-                  "..", "..", ".0", "0.", ".0", "0."]
-    actual     = translator.english_to_braille("z O")
-
-    assert_equal expected, actual
-  end
-
-  def test_can_translate_a_punctuation_mark
-    translator = Translator.new
-    expected   = ["..", "0.", "00"]
-    actual     = translator.english_to_braille("?")
-
-    assert_equal expected, actual
-  end
-
-  def test_can_translate_multiple_punctuation_marks
-    translator = Translator.new
-    expected   = ["..", "00", ".0", "..", "..", "00", "..", "00", "0."]
-    actual     = translator.english_to_braille(".-!")
-
-    assert_equal expected, actual
-  end
-
-  def test_can_translate_number
+  def test_can_a_translate_number
     skip
     translator = Translator.new
     expected   = [".0", ".0", "00", "0.", ".0", ".."]

@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/printer.rb'
+require './lib/printer'
 require './lib/translator'
 require 'pry'
 

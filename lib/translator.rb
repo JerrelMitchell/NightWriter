@@ -50,9 +50,13 @@ class Translator
   end
 
   def english_to_braille(characters)
-    characters.gsub(/\n/, '').split('').map do |character|
+    clean_and_split(characters).map do |character|
       add_shift?(character)
     end.flatten
+  end
+
+  def clean_and_split(characters)
+    characters.delete("/\n/").split('')
   end
 
   def add_shift?(character)

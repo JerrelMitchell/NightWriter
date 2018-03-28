@@ -110,4 +110,11 @@ class TranslatorTest < Minitest::Test
     actual     = translator.english_to_braille("Mike's 62nd PIZZA?!")
     assert_equal expected, actual
   end
+
+  def test_can_translate_one_character_from_braille_to_english
+    translator = Translator.new
+
+    actual = translator.braille_to_english('0.....')
+    assert_equal 'a', actual
+  end
 end

@@ -70,26 +70,33 @@ class Translator
   end
 
   def braille_to_english(characters)
-
+    alphabet.invert
+    read_braille(characters)
   end
 
-  # method adds ONE number shift if there're any number of numbers put together
-  # ONE letter shift if a word is capitalized.
-  # and TWO shifts if there is a WORD/ABBREVIATION made of capitals letters.
-
-  # method needs to be broken up and encapsulated
-  # pull out number and letter shift into methods that will add shifts on their
-  # own accord to better control amount of shift characters!!!
-
-  # def shift_capitals?(words)
-  #   words.split(' ').map do |word|
-  #     if word.capitalize == word
-  #       alphabet[:letter_shift]
-  #     elsif word.upcase == word
-  #       alphabet[:letter_shift] + alphabet[:letter_shift]
-  #     else
-  #       word
-  #     end
-  #   end
-  # end
+  def read_braille(braille)
+    braille.chars.each_slice(2).map do |char|
+      char
+    end
+  end
 end
+
+# method adds ONE number shift if there're any number of numbers put together
+# ONE letter shift if a word is capitalized.
+# and TWO shifts if there is a WORD/ABBREVIATION made of capitals letters.
+
+# method needs to be broken up and encapsulated
+# pull out number and letter shift into methods that will add shifts on their
+# own accord to better control amount of shift characters!!!
+
+# def shift_capitals?(words)
+#   words.split(' ').map do |word|
+#     if word.capitalize == word
+#       alphabet[:letter_shift]
+#     elsif word.upcase == word
+#       alphabet[:letter_shift] + alphabet[:letter_shift]
+#     else
+#       word
+#     end
+#   end
+# end

@@ -9,7 +9,7 @@ class Printer
     @output_text = ''
   end
 
-  # outputs translated characters into tracks.
+  # uses other methods to put translated characters into output text for tracks.
   def print_tracks(characters)
     characters.each_slice(3) do |character|
       fill_tracks(character)
@@ -26,8 +26,8 @@ class Printer
     track3 << character[2]
   end
 
-  # tracks of sliced characters are shovelled into output text until the track
-  # string is empty.
+  # tracks of sliced characters are shovelled into output text until the
+  # track string is empty.
   def empty_tracks_into_output(track)
     until track.empty?
       output_text << end_track(track1)
@@ -36,7 +36,7 @@ class Printer
     end
   end
 
-  # permanently alters strings in arrays by calling slice! method until then
+  # permanently alters strings in arrays by calling slice! method if the
   # character count reaches 79 on a given track. then adds a new line to end of
   # track.
   def end_track(track)

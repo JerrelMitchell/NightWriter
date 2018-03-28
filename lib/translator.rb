@@ -1,6 +1,6 @@
 # handles manipulation of alphanumeric characters into/from braille.
 class Translator
-  attr_reader :alphabet
+  attr_reader :alphabet, :numerics, :reverse_alphabet
   def initialize
     @alphabet = { 'a' => ['0.', '..', '..'],
                   'b' => ['0.', '0.', '..'],
@@ -28,7 +28,15 @@ class Translator
                   'x' => ['00', '..', '00'],
                   'y' => ['00', '.0', '00'],
                   'z' => ['0.', '.0', '00'],
-                  '0' => ['.0', '00', '..'],
+                  ' ' => ['..', '..', '..'],
+                  '.' => ['..', '00', '.0'],
+                  '?' => ['..', '0.', '00'],
+                  '!' => ['..', '00', '0.'],
+                  "'" => ['..', '..', '0.'],
+                  ',' => ['..', '0.', '..'],
+                  '-' => ['..', '..', '00'],
+                  letter_shift: ['..', '..', '.0'] }
+    @numerics = { '0' => ['.0', '00', '..'],
                   '1' => ['0.', '..', '..'],
                   '2' => ['0.', '0.', '..'],
                   '3' => ['00', '..', '..'],
@@ -38,15 +46,8 @@ class Translator
                   '7' => ['00', '00', '..'],
                   '8' => ['0.', '00', '..'],
                   '9' => ['.0', '0.', '..'],
-                  ' ' => ['..', '..', '..'],
-                  '.' => ['..', '00', '.0'],
-                  '?' => ['..', '0.', '00'],
-                  '!' => ['..', '00', '0.'],
-                  "'" => ['..', '..', '0.'],
-                  ',' => ['..', '0.', '..'],
-                  '-' => ['..', '..', '00'],
-                  letter_shift: ['..', '..', '.0'],
                   number_shift: ['.0', '.0', '00'] }
+    @reverse_alphabet = @alphabet.invert
   end
 
   def english_to_braille(characters)
@@ -61,7 +62,7 @@ class Translator
 
   def add_shift?(character)
     if character.count('0-9') > 0
-      alphabet.fetch_values(:number_shift, character)
+      numerics.fetch_values(:number_shift, character)
     elsif character == character.downcase
       alphabet[character]
     else
@@ -70,14 +71,8 @@ class Translator
   end
 
   def braille_to_english(characters)
-    alphabet.invert
-    read_braille(characters)
-  end
-
-  def read_braille(braille)
-    braille.chars.each_slice(2).map do |char|
-      char
-    end
+    key = characters.chars.each_slice(2).map(&:join)
+    reverse_alphabet[key]
   end
 end
 

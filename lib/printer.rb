@@ -36,9 +36,8 @@ class Printer
     end
   end
 
-  # permanently alters strings in arrays by calling slice! method if the
-  # character count reaches 79 on a given track. then adds a new line to end of
-  # track.
+  # permanently alters strings in arrays by calling slice! method on a given
+  # track. then adds a new line to end of track.
   def end_track(track)
     track.slice!(0..79) << "\n"
   end

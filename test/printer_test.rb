@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/printer'
 require './lib/translator'
-require 'pry'
 
 class PrinterTest < Minitest::Test
   def test_it_exists

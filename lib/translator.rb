@@ -23,38 +23,14 @@ class Translator
       alphabet.fetch_values(:letter_shift, character.downcase)
     end
   end
-  #In the spirit of trying I went this far
+
   def braille_to_english(characters)
     keys = characters.chars.each_slice(2).map(&:join)
     string = ''
-    caps = '.....0'
     keys.each_slice(3) do |key|
-      if key == caps
-        string << caps.keys[1..6].upcase
-      else
-        string << reverse_alphabet[key]
-      end
+      next if reverse_alphabet[key] == :letter_shift
+      string << reverse_alphabet[key]
     end
     string
   end
 end
-
-# method adds ONE number shift if there're any number of numbers put together
-# ONE letter shift if a word is capitalized.
-# and TWO shifts if there is a WORD/ABBREVIATION made of capitals letters.
-
-# method needs to be broken up and encapsulated
-# pull out number and letter shift into methods that will add shifts on their
-# own accord to better control amount of shift characters!!!
-
-# def shift_capitals?(words)
-#   words.split(' ').map do |word|
-#     if word.capitalize == word
-#       alphabet[:letter_shift]
-#     elsif word.upcase == word
-#       alphabet[:letter_shift] + alphabet[:letter_shift]
-#     else
-#       word
-#     end
-#   end
-# end

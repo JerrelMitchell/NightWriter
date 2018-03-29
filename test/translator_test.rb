@@ -149,11 +149,43 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_it_can_translate_a_sentence_from_braille_to_english
-    skip
+
     translator = Translator.new
-    braille    = ''
-    expected   = 'hello there, how are you?'
+    braille    = '0.00..0..0..0.0.0.0.0.0.0..00........0000.'\
+                 '0.00..0..0..0.000.0..0....0.........0.00..'\
+                 '0..00..000.0......0.....0.000.0..0........'\
+                 '00.0000..00.0...00..0.00'
+    expected   = "hello there, how are you?"
     actual     = translator.braille_to_english(braille)
     assert_equal expected, actual
   end
+
+  def test_it_can_translate_a_capital_from_braille_to_english
+    
+    translator = Translator.new
+    braille    = '.....00..000'
+    expected   = "Z"
+    actual     = translator.braille_to_english(braille)
+    assert_equal expected, actual
+  end
+
+  def test_it_can_translate_capital_letters_within_a_word_from_braille_to_english
+    skip
+    translator = Translator.new
+    braille    = '.....0000.0..00........00..0000..000.....00.....'
+    expected   = "PiZzA"
+    actual     = translator.braille_to_english(braille)
+    assert_equal expected, actual
+  end
+
+  def test_it_can_translate_a_number_from_braille_to_english
+    skip
+    translator = Translator.new
+    braille    = '.0.000000...'
+    expected   = "6"
+    actual     = translator.braille_to_english(braille)
+    assert_equal expected, actual
+  end
+
+
 end

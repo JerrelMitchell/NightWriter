@@ -23,12 +23,17 @@ class Translator
       alphabet.fetch_values(:letter_shift, character.downcase)
     end
   end
-
+  #In the spirit of trying I went this far
   def braille_to_english(characters)
     keys = characters.chars.each_slice(2).map(&:join)
     string = ''
+    caps = '.....0'
     keys.each_slice(3) do |key|
-      string << reverse_alphabet[key]
+      if key == caps
+        string << caps.keys[1..6].upcase
+      else
+        string << reverse_alphabet[key]
+      end
     end
     string
   end

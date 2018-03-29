@@ -26,10 +26,11 @@ class Translator
 
   def braille_to_english(characters)
     keys = characters.chars.each_slice(2).map(&:join)
+    string = ''
     keys.each_slice(3) do |key|
-       key
+      string << reverse_alphabet[key]
     end
-    reverse_alphabet[key]
+    string
   end
 end
 
